@@ -54,7 +54,6 @@ schema_dict = { 'area_fips':str,
 schema_dict_nested = {str:
                 ['area_fips',
                 'own_code',
-                'industry_code',
                 'agglvl_code',
                 'size_code',
                 'disclosure_code',
@@ -67,6 +66,7 @@ schema_dict_nested = {str:
                 'oty_disclosure_code'],
                 int:
                 ['qtrly_estabs',
+                'industry_code',
                 'month1_emplvl',
                 'month2_emplvl',
                 'month3_emplvl',
@@ -102,13 +102,10 @@ schema_dict_nested = {str:
 
 drop_list = ['area_fips',
                 'own_code',
-                'industry_code',
-                'agglvl_code',
                 'size_code',
                 'disclosure_code',
                 'area_title',
                 'own_title',
-                'agglvl_title',
                 'size_title',
                 'lq_disclosure_code',
                 'oty_disclosure_code',
@@ -139,7 +136,7 @@ drop_list = ['area_fips',
                 'lq_avg_wkly_wage',
                 'taxable_qtrly_wages']
 
-recession_years = [ '2007'
+recession_years = [ '2007',
                     '2008',
                    '2009',
                    '2010',

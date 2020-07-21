@@ -1,6 +1,56 @@
-def schema_convert(df):
-    schema_dict = {'A':str, 'B':int,'C':float,}
-    df = pd.DataFrame({'A':['area_fips','own_code','industry_code','agglvl_code','size_code','year','qtr','disclosure_code','area_title','own_title','industry_title','agglvl_title','size_title','lq_disclosure_code','oty_disclosure_code'],'B':['qtrly_estabs_count','month1_emplvl','month2_emplvl','month3_emplvl','total_qtrly_wages', 'taxable_qtrly_wages','qtrly_contributions','avg_weekly_wage','oty_qtrly_estabs_count_chg','oty_month1_emplvl_chg','oty_month2_emplvl_chg','oty_month3_emplvl_chg','oty_total_qtrly_wages_chg','oty_taxable_qtrly_wages_chg','oty_qtrly_contributions_chg','oty_avg_wkly_wage_chg',],'C':['lq_qtrly_estabs_count','lq_month1_emplvl','lq_month2_emplvl','lq_month3_emplvl','lq_total_qtrly_wages','lq_taxable_qtrly_wages','lq_qtrly_contributions','lq_avg_wkly_wage','oty_qtrly_estabs_count_pct_chg','oty_month1_emplvl_pct_chg','oty_month3_emplvl_pct_chg','oty_month2_emplvl_pct_chg','oty_total_qtrly_wages_pct_chg','oty_taxable_qtrly_wages_pct_chg','oty_qtrly_contributions_pct_chg','oty_avg_wkly_wage_pct_chg']})
-    for col, col_type in schema_dict.items():
-        df[col] = df[col].astype(col_type)
+import pandas as pd
+import matplotlib.pyplot as pyplot
+import math
+import scipy as scipy
+import numpy as np
+from varname import nameof
+from src.lookups import *
+
+
+def import_one(year):
+    filepath = 'data/' + str(year) + '.csv'
+    df = pd.read_csv(filepath, dtype = schema_dict)
+    df = df.drop(drop_list, axis = 1)
     return df
+
+def import_all(years):
+    df = import_one(years[0])
+    for year in years[1:]:
+        df = df.append(import_one(year))
+    return df
+
+def export_info(df):
+    strfile = str(nameof(df)) + '_info.txt'
+    buffer = io.StringIO()
+    df.info(buf=buffer)
+    info = buffer.getvalue()
+    with open(strfile, "a", encoding="utf-8") as f: 
+        f.write(info)
+        f.close
+    strfile = str(nameof(df)) + '_desc.csv'
+    print(df.describe().to_csv(strfile))
+    strfile = str(nameof(df)) + '_freq.csv'
+    print(df['industry_title'].value_counts().to_csv(strfile))
+
+def add_qtrid(df):
+    df['qtrid'] = df['year'] + (df['qtr']/10)
+    return df
+
+def add_dupecheck(df):
+    df['industry_code'] = df['industry_code'].str.replace('-','').astype('int32')
+    #df['industry_code'] = df['industry_code'].map(lambda x: x.strip('-'))
+    #df.astype({'industry_code':'int32'}).dtypes
+    df['dupecheck'] = ((df['industry_code']) * 10000)+ df['qtrid']
+    return df
+
+def add_yearcheck(df)
+
+
+
+# def import_all(years):
+#     lst = []
+#     for year in years:
+#         filepath = 'data/' + str(year) + '.csv'
+        # lst.append(exec('scew' + str(year) +'_df = pd.read_csv(filepath, dtype = schema_dict)'))
+
+
