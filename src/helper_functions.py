@@ -38,19 +38,23 @@ def add_qtrid(df):
 
 def add_dupecheck(df):
     df['industry_code'] = df['industry_code'].str.replace('-','').astype('int32')
-    #df['industry_code'] = df['industry_code'].map(lambda x: x.strip('-'))
-    #df.astype({'industry_code':'int32'}).dtypes
     df['dupecheck'] = ((df['industry_code']) * 10000)+ df['qtrid']
     return df
 
-def add_yearcheck(df)
+def add_yearcheck(df):
+    df['yearcheck'] = ((df['industry_code']) * 10000)+ df['year']
+    return df
 
+# def create_df_firm(df):
+#     print(df.head())
+#     return df.pivot_table(columns = 'qtrid', values = 'qtrly_estabs_count', index = 'industry_code', aggfunc = np.max)
 
+def create_df_firm(df):
+    return df.pivot_table(columns = 'qtrid', values = 'month3_emp_lvl', index = 'industry_code', aggfunc = np.max)
+    
+def create_df_empl(df):
+    return df.pivot_table(columns = 'qtrid', values = 'month3_emp_lvl', index = 'industry_code', aggfunc = np.max)
 
-# def import_all(years):
-#     lst = []
-#     for year in years:
-#         filepath = 'data/' + str(year) + '.csv'
-        # lst.append(exec('scew' + str(year) +'_df = pd.read_csv(filepath, dtype = schema_dict)'))
-
+def create_df_wage(df):
+    return df.pivot_table(columns = 'qtrid', values = 'avg_wkly_wage', index = 'industry_code', aggfunc = np.min)
 
