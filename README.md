@@ -67,7 +67,7 @@ Next came the task of getting all these files into a format that I wanted. I wro
  
  This table provides the raw data that will generate the variables I really care about: growth over the time period in both wages and employment, when the industry "peaked" in the early years of the recession, and when the industry recovered. I transformed the data into two seperate timeline tables, tracking the employment and wage numnbers over the relevant quarters. In each table I computed the relevant derived vairables, then joined both the employee and wage timeline tables, dropping the time series and retaining only the derived variables.
  
- #   Column               Non-Null Count  Dtype    Description  
+     Column               Non-Null Count  Dtype    Description  
 ---  ------               --------------  -----    -----------
  0   industry_code        2447 non-null   int64    Numeric code for industry
  1   industry_title       2447 non-null   object   Full name of each industry
@@ -176,6 +176,25 @@ Wage Recovery : Wage Growth
 H(0) : r ~ 0, p  <0.05
 H(A) : r > 0, p  <0.05
 prediction: H(A)
-Reasoning: Industries that 
+Reasoning: Industries that have wages recover more quickly will continue to prosper and increase pay.
 
+Employment Recovery : Employment Growth
+H(0) : r ~ 0, p  <0.05
+H(A) : r > 0, p  <0.05
+prediction: H(A)
+Reasoning: This is where the issues with the EMployment Recovery and the potential for Typpe 1 errors converge. I am predicting a relationship but it might not be trustworthy.
 
+# Further Research/Work
+
+This data is illuminating, but incomplete. To delve more into this topic:
+
+1. Run the analysis on *county* rather than industry. This will remove the data classification issues.
+2. Get the changelog from BLS and run corrections on the industry data
+3. Repeat the analysis on different generations (levels of aggregation)
+4. Broaden the time period involved (to capture the possibility of a normal distribution in wage recovery).
+5. Adjust the metrics:
+  a. Calculate the nadir of wage/employment
+  b. Calculate the peak *before* the nadir
+  c. Calculate the recovery after the nadir
+  d. Add decline time and recovery time as dependent variables.
+6. Produce a "report card" function than can give a complete description of an industry- how it performed, what percentile it landed in.
