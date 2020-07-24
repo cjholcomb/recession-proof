@@ -98,13 +98,15 @@ For example, Forestry and Logging (113) is part of Agriculture, Forestry, Fishin
 
 Let's take a look at the employment and wage timelines for those bird's-eye aggregations.
 
-[insert six line graphs]
+![](img/Top_empl.PNG)![](img/Top_wage.PNG)
+![](img/Top_empl_goods.PNG)![](img/Top_wage_goods.PNG)
+![](img/Top_empl_servs.PNG)![](img/Top_wage_servs.PNG)
 
 It should be obvious that most of these aggregations are severly affected by cyclical employment cycles. We can see general trends thorughout the duration of the recession, but there's too much cyclical noise to draw anything really useful.
 
 Given that some industries are cyclical (retail, farming) and some are stable (information systems, health care), lets go all the way down to generation 5, the most granular aggregation data we have (industry code > 100,000) and see the top 10 best-performing industries on both wages and employment.
 
-[insret two charts here]
+![](img/Top_10_empl_gen5.png)![](img/Top_10_empl_gen5.png)
 
 These charts reveal two things- 1- there is no obvious commonailty between the industries in question, and 2- there are some massive spikes/drops in the data.
 
@@ -126,9 +128,54 @@ For now, I will proceed with dropping the "dead" rows from my analysis.
 
 Plotting the distributions of our four main variables shows us the following:
  
-[Insert histograms]
+![](img/empl_growth_dist.png)![](img/wage_growth_dist.png)
 
-Wage growth and employment growth are roughly normal distributions (but the means of those distributions are scary. < 2% for wages and < 0 for employment.
+Wage growth and employment growth are roughly normal distributions (but the means of those distributions are scary. < 2% for wages and < 0 for employment.)
 
-Wage recovery is a bit more odder
+![](img/empl_recovery_dist.png)![](img/wage_recovery_dist.png)
+
+Wage recovery is a bit odd. It *wants* to be a normal distribution, and it might be if the data was smoothed over each year and extended back further in time, with a mean in 2010 or so. This speaks to a lopsidedness in the size of industries, though. Given the total economy (industry code 10) didn't recover until May 2014 . . .those industries that recovered more slowly are far larger than those that recovered quickly.
+
+The employment recovery distribution actually points to a flaw in our data. That giant spike in 2010 speaks to a mistaken assumption at the onset of this project. Two years into the decline, some industries immidiatly bounced back, and some *hadn't yet bottomed out*. Mroe on this in the "further research" section.
+
+# Hypotheses
+
+The employment numbers, with their issues of reclassification and the mistraken assumption at the outset, presents an issue as far as making hypotheses. We do not have any indication of how this affects the overall results. 
+
+Because of this, I will predict that *given this dataset* and classifications, relationships between employment recovery time and our other three variables will not be significant. However, that still leaves the question of how each variable will be related to one another.
+
+Using a Pearson correlation, I will attempt to discern relationships between our four key variables.
+
+## Testing
+
+Wage Recovery : Employment Recovery
+H(0) : r ~ 0, p  <0.05
+H(A) : r > 0, p  <0.05
+prediction: H(0)
+Reasoning: Employment Recovery is not reliable
+
+Wage Recovery : Employment Growth
+H(0) : r ~ 0, p  <0.05
+H(A) : r > 0, p  <0.05
+prediction: H(A)
+Reasoning: Growth industries quickly will see higher wages
+
+Wage Growth : Employment Growth
+H(0) : r ~ 0, p  <0.05
+H(A) : r > 0, p  <0.05
+prediction: H(A)
+Reasoning: Growth Industries growing quickly will see higher wages
+
+Wage Growth : Employment Growth
+H(0) : r ~ 0, p  <0.05
+H(A) : r > 0, p  <0.05
+prediction: H(0)
+Reasoning: Employment Recovery is not reliable
+
+Wage Recovery : Wage Growth
+H(0) : r ~ 0, p  <0.05
+H(A) : r > 0, p  <0.05
+prediction: H(A)
+Reasoning: Industries that 
+
 
