@@ -12,7 +12,7 @@ This project is an attempt to describe the employment numbers from the last rece
 
 # Assumptions
 
-* The BLS data in question is accurate (duh).
+* The BLS data in question is accurate.
 * Inflation will be ignored (for now).
 * We will concern ourselves only with job counts, not population counts or pro0portions of jobs to working-age/capable Americans.
 * Average wage in each industry (the only available data) is generalizable to the working population.
