@@ -176,6 +176,28 @@ Wage Recovery : Wage Growth
 H(0) : r ~ 0, p  <0.05
 H(A) : r > 0, p  <0.05
 prediction: H(A)
-Reasoning: Industries that 
+Reasoning: Industries that have wages recover more quickly will continue to prosper and increase pay.
+
+Employment Recovery : Employment Growth
+H(0) : r ~ 0, p  <0.05
+H(A) : r > 0, p  <0.05
+prediction: H(A)
+Reasoning: This is where the issues with the EMployment Recovery and the potential for Typpe 1 errors converge. I am predicting a relationship but it might not be trustworthy.
+
+
+# Further Research/Work
+
+This data is illuminating, but incomplete. To delve more into this topic:
+
+1. Run the analysis on *county* rather than industry. This will remove the data classification issues.
+2. Get the changelog from BLS and run corrections on the industry data
+3. Repeat the analysis on different generations (levels of aggregation)
+4. Broaden the time period involved (to capture the possibility of a normal distribution in wage recovery).
+5. Adjust the metrics:
+  a. Calculate the nadir of wage/employment
+  b. Calculate the peak *before* the nadir
+  c. Calculate the recovery after the nadir
+  d. Add decline time and recovery time as dependent variables.
+6. Produce a "report card" function than can give a complete description of an industry- how it performed, what percentile it landed in.
 
 
