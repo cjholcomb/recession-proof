@@ -1,4 +1,4 @@
-#Which industries can weather a recession?
+# Which industries can weather a recession?
 
 An attempt to discern what industries fared the best in retaining jobs and maintaining wages through the 2007 recession.
 
