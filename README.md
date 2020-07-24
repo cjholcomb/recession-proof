@@ -82,21 +82,53 @@ Next came the task of getting all these files into a format that I wanted. I wro
  
  Now that I have the data I want, it's time for some top-level exploration.
  
- ## A note on industry codes:
+ ## Industry codes and how to understand the dataset:
  
- The QCEW data contains five layers of aggregation
+Each measurement (row) in the dataset is not necessarily unique- there is a good deal of aggregation going on. Understanding the aggregation levels is key to understanding how this dataset works.
+
+You can tell what "level" of data you're looking at by the industry code. For some truly bird's eye views of the data, you can look at # 10 (total of all industries). Below that are 101 and 102, Goods and Services, respectively. Beneath that you have 1011 (Natural Resources), 1012 (Construction), 1013(Manufactoring) 1021 (Trade/Transit/Utilities), 1022(Information), and 1023 (Finance). You might be seeing a pattern emrege.
+
+The rest of the data is divided similarly, although the previously mentioned sections have overlap within the remainder of the dataset, the remainder is primarily what we are intersted in. You can tell what an industries "parent"(a higher level aggregation) is by chopping off the last digit, and you can bet that it will be divided into smaller slices by adding digits to the end of it.
+
+For example, Forestry and Logging (113) is part of Agriculture, Forestry, Fishing and Funting (11). You can find Forest Nursery (1132) and Logging (1133) within 113.
+
+*Crucially, this allows me to be selective about the granularity of the industries I'm examining.*
+
+##Some basic exploration:
+
+Let's take a look at the employment and wage timelines for those bird's-eye aggregations.
+
+[insert six line graphs]
+
+It should be obvious that most of these aggregations are severly affected by cyclical employment cycles. We can see general trends thorughout the duration of the recession, but there's too much cyclical noise to draw anything really useful.
+
+Given that some industries are cyclical (retail, farming) and some are stable (information systems, health care), lets go all the way down to generation 5, the most granular aggregation data we have (industry code > 100,000) and see the top 10 best-performing industries on both wages and employment.
+
+[insret two charts here]
+
+These charts reveal two things- 1- there is no obvious commonailty between the industries in question, and 2- there are some massive spikes/drops in the data.
+
+# A major caveat about the dataset:
+
+The dataset is impeccibly clean- but it does have some nasty historical artifacts. During several years in question, some routine reclassifcation work affected the data, moving firms from one industry classification to another, consolidating industry groups and depreciating others. *Unfortunately, these cahnges were not applies retrospectively.* As such, there are quite a few industries that "drop off" the data entirely and will be shown to be incredibly poor performers. 
+
+This requires quite a few masks needed, to get rid of nans and industries that no longer exist in this classifcation scheme. This has a noticeable effect on my ability to functionize much of my work.
+
+Additionally, this can introduce some type-1 errors within the findings.
+
+### Can the data be cleaned?
+
+Without a key of what was transferred where, probably not. Analysis can be done on which industries were affected but likely not specifically how. I've reached out to the BLS as the link to said key gives a 404 error.
+
+For now, I will proceed with dropping the "dead" rows from my analysis.
+
+# Analysis
+
+Plotting the distributions of our four main variables shows us the following:
  
+[Insert histograms]
 
+Wage growth and employment growth are roughly normal distributions (but the means of those distributions are scary. < 2% for wages and < 0 for employment.
 
+Wage recovery is a bit more odd
 
-
-
-It was time to create three sub-tables to get at what I really cared about. I made a composite column (year + quarter) and then pivoted the table three times. Once for total establishments, once for total employment, and once for average wages. This gave me a timeline of all 32 quarters of data across all industries.
-
- There were quite a few industries that seemed to pop up more than once in the data. Clearly some of them are aggregate measures of several more rows of data, possibly including rows with the same industry name. The data nerd in me wanted to discern how those aggregate rows are comprised, but my goal is to provide information for jobless Americans, not to fully account that the sum of everything adds up. In those cases, I took the maximum values of each unique industry for both establishments and employment. For wages, I went with the minimum. Again, this is from the perspective of a job seeker, and given we don't know how much overlap is in each row of data, means, quartiles, and medians are not reliable. Minimums is the more conservative measure, which, as a job seeker myself, I'd be more likely to place bets on than the max.
-
- Next steps:
-
- Compute "peak" month from 2007 - 2008 column.
- Compute recovery time in quarters: quarters between peak month in 07-08 until the number surpassed the peak.
- Compute "growth"- difference between peak and recovery 
