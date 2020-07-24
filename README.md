@@ -146,39 +146,68 @@ Using a Pearson correlation, I will attempt to discern relationships between our
 ## Testing
 
 Wage Recovery : Employment Recovery
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(0)
+
 Reasoning: Employment Recovery is not reliable
+
 
 Wage Recovery : Employment Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(A)
+
 Reasoning: Growth industries quickly will see higher wages
 
+
 Wage Growth : Employment Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(A)
+
 Reasoning: Growth Industries growing quickly will see higher wages
 
+
 Wage Growth : Employment Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(0)
+
 Reasoning: Employment Recovery is not reliable
 
+
 Wage Recovery : Wage Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(A)
+
 Reasoning: Industries that have wages recover more quickly will continue to prosper and increase pay.
 
+
 Employment Recovery : Employment Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(A)
+
 Reasoning: This is where the issues with the EMployment Recovery and the potential for Typpe 1 errors converge. I am predicting a relationship but it might not be trustworthy.
 
 
