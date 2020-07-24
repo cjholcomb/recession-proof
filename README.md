@@ -95,15 +95,18 @@ For example, Forestry and Logging (113) is part of Agriculture, Forestry, Fishin
 
 Let's take a look at the employment and wage timelines for those bird's-eye aggregations.
 
-![](img/Top_empl.PNG)![](img/Top_wage.PNG)
-![](img/Top_empl_goods.PNG)![](img/Top_wage_goods.PNG)
-![](img/Top_empl_servs.PNG)![](img/Top_wage_servs.PNG)
+![](img/Top_empl.PNG)
+![](img/Top_wage.PNG)
+![](img/Top_empl_goods.PNG)
+![](img/Top_wage_goods.PNG)
+![](img/Top_empl_servs.PNG)
+![](img/Top_wage_servs.PNG)
 
 It should be obvious that most of these aggregations are severly affected by cyclical employment cycles. We can see general trends thorughout the duration of the recession, but there's too much cyclical noise to draw anything really useful.
 
 Given that some industries are cyclical (retail, farming) and some are stable (information systems, health care), lets go all the way down to generation 5, the most granular aggregation data we have (industry code > 100,000) and see the top 10 best-performing industries on both wages and employment.
 
-![](img/Top_10_empl_gen5.png)![](img/Top_10_empl_gen5.png)
+![](img/Top_10_empl_gen5.png)![](img/Top_10_wage_gen5.png)
 
 These charts reveal two things- 1- there is no obvious commonailty between the industries in question, and 2- there are some massive spikes/drops in the data.
 
