@@ -34,7 +34,7 @@ I will be using data from the U.S. Bureau of Labor Statistics' Quarterly Census 
 
 The below image illustrates the length and severity of the 2007 recession:
 
-![](img/ScariestJan2017.PNG =250x)
+![|20%](img/ScariestJan2017.PNG =250x)
 
 ## File too large!
 
