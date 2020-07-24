@@ -20,10 +20,7 @@ This project is an attempt to describe the employment numbers from the last rece
 # Questions
 
 * What were the most "resilient" industries? Which industries had the shortest period between job losses and recovery to their pre-recession numbers?
-  * Apply this same question to the number of establishments in each industry.
-* Were there any industries that remained constant in their job numbers throughout the recession?
-* Which industries had the most dramatic shifts in wages across the recession? Which were devalued (lower average wage) and which increased in value?
-* How did the job numbers change for each industry as a percentage of total American jobs?
+* What does the distribution of wage and employment growth look like over the recession?
 
 ## Stretch Goals
 
