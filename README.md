@@ -1,34 +1,29 @@
-# Are Recession-Proof jobs real?
-An attempt to discern what industries recovered from the *last* recession the quickest, and to analyze the number of jobs and median wages from each industry, with the goal of figuring out just what jobs are "recession proof".
+#Which industries can weather a recession?
+
+An attempt to discern what industries fared the best in retaining jobs and maintaining wages through the 2007 recession.
 
 # Overview
 
-We are currently in one of the worst recessions in living memory. The COVID-19 pandemic has hobbled the American economy, with layoffs putting millions of Americans in precarious financial positions. Firms have collapsed or gone dark, education is being (temporarily?) reworked to be online-only. Jobless Americans, myself included, are currently using their idle time to gain new marketable skills so they can reenter an extremely competitive workforce.
+We are currently in one of the worst recessions in living memory. The COVID-19 pandemic has hobbled the American economy, with layoffs putting millions of Americans in precarious financial positions. Firms have collapsed or gone dark, education is being (temporarily?) reworked to be online-only. Jobless Americans are currently using their idle time to gain new marketable skills so they can reenter an extremely competitive workforce.
 
-Job training is the solution to any and all "skills mismatch" problems in the labor market, our extremely knowledgeable policy-makers tell us. There are government-funded programs to help workers learn new skills. The decision of *what* new skills to learn, however, is left to individual workers.
+Job training is the solution to any and all "skills mismatch" problems in the labor market, or so our policy-makers believe. There are government-funded programs to help workers learn new skills. Americans looking to add to their skill sets can borrow to pay for education or reach into their own pockets. The decision of *what* new skills to learn, however, is left to individual workers.
 
 This project is an attempt to describe the employment numbers from the last recession. I intend to compare the employment numbers across industries, to see which industries are the "safest" bets for workers to invest their resources into joining.
 
-# Dataset
-
-I will be using data from the U.S. Bureau of Labor Statistics' Quarterly Census of Employment and Wages. Data exists as far back as 1990 (for the current questionnaire), however we will only concern ourselves with the months between Q1 2007 (the "official" start of the recession) to Q4 2014 (The year in which the American economy achieved the same overall job numbers as when the recession began).
-
-[insert scariest chart ever here]
-
 # Assumptions
 
-1. The BLS data in question is accurate (duh).
-2. Inflation will be ignored (for now).
-3. We will concern ourselves only with job counts, not population counts or proportions of jobs to working-age/capable Americans.
-4. Average wage in each industry (the only available data) is generalizable to the working population.
+* The BLS data in question is accurate (duh).
+* Inflation will be ignored (for now).
+* We will concern ourselves only with job counts, not population counts or pro0portions of jobs to working-age/capable Americans.
+* Average wage in each industry (the only available data) is generalizable to the working population.
 
 # Questions
 
-1. What were the most "resilient" industries? Which industries had the shortest period between job losses and recovery to their pre-recession numbers?
-  a. Apply this same question to the number of establishments in each industry.
-2. Were there any industries that remained constant in their job numbers throughout the recession?
-3. Which industries had the most dramatic shifts in wages across the recession? Which were devalued (lower average wage) and which increased in value?
-4. How did the job numbers change for each industry as a percentage of total American jobs?
+* What were the most "resilient" industries? Which industries had the shortest period between job losses and recovery to their pre-recession numbers?
+  * Apply this same question to the number of establishments in each industry.
+* Were there any industries that remained constant in their job numbers throughout the recession?
+* Which industries had the most dramatic shifts in wages across the recession? Which were devalued (lower average wage) and which increased in value?
+* How did the job numbers change for each industry as a percentage of total American jobs?
 
 ## Stretch Goals
 
@@ -36,9 +31,17 @@ I will be using data from the U.S. Bureau of Labor Statistics' Quarterly Census 
 2. Which region(s) were the highest recovery/growth areas for the most resilient industries? (I know you want maps, Land)
 3. Are there any familiar trends in the *current* (Q1-Q2 2020) recession?
 
-#Data Wrangling:
+# Dataset
 
-##An unfortunate assumption
+I will be using data from the U.S. Bureau of Labor Statistics' Quarterly Census of Employment and Wages. Data exists as far back as 1990 (for the current questionnaire), however we will only concern ourselves with the months between Q1 2007 (the "official" start of the recession) to Q4 2014 (The year in which the American economy achieved the same overall job numbers as when the recession began).
+
+The below image illustrates the length and severity of the 2007 recession:
+
+![recession_chart](img/ScariestJan2017.PNG)
+
+
+[insert scariest chart ever here]
+## An unfortunate assumption
 
 I started with the *full* dataset from the BLS website (Found here:https://data.bls.gov/cew/data/files/2007/csv/2007_qtrly_singlefile.zip). The compressed file was approximately 500 megs, and uncompressed to 2.2 gigs. And that was only for one year.
 
