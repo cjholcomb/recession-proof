@@ -63,9 +63,30 @@ Next came the task of getting all these files into a format that I wanted. I wro
  9   month3_emplvl       149772 non-null  int64    Count of total employees in industry for month 1 of the qtr 
  10  total_qtrly_wages   149772 non-null  int64    Total wages earned in that industry for the quarter (whole dollars)
  11  avg_wkly_wage       149772 non-null  int64    Average wage for employees in the industry
- 12  qtrid               149772 non-null  float64  Composit of year and qtr (year + qtr * 4)
+ 12  qtrid               149772 non-null  float64  Composit of year and qtr [(year + qtr) * 4]
  
- This table provides the raw data that will generate the variables I really care about: growth over the time period in both wages and employment, when the industry "peaked" in the early years of the recession, and when the industry recovered. I transformed the data into two seperate timeline tables, tracking the employment and wage numnbers over the relevant quarters. In each table I computed the relevant
+ This table provides the raw data that will generate the variables I really care about: growth over the time period in both wages and employment, when the industry "peaked" in the early years of the recession, and when the industry recovered. I transformed the data into two seperate timeline tables, tracking the employment and wage numnbers over the relevant quarters. In each table I computed the relevant derived vairables, then joined both the employee and wage timeline tables, dropping the time series and retaining only the derived variables.
+ 
+ #   Column               Non-Null Count  Dtype    Description  
+---  ------               --------------  -----    -----------
+ 0   industry_code        2447 non-null   int64    Numeric code for industry
+ 1   industry_title       2447 non-null   object   Full name of each industry
+ 2   recovery_wage        2447 non-null   float64  Quarter in which wages surpassed pre-recession peak
+ 3   peak_wage            2363 non-null   float64  Pre-recession peak wages
+ 4   growth_wage          2160 non-null   float64  2014q4 wages - peak_wage
+ 5   growth_pcg_wage      2160 non-null   float64  100 * ( growth_wage / peak_wage )
+ 6   recovery_empl        2447 non-null   float64  Quarter in which employment surpassed
+ 7   peak_empl            2363 non-null   float64  Pre- recession peak employment
+ 8   growth_empl          2160 non-null   float64  2014q4 employment - peak_empl
+ 9   growth_pcg_empl      2160 non-null   float64  100* ( growth_empl / peak_empl )
+ 
+ Now that I have the data I want, it's time for some top-level exploration.
+ 
+ ## A note on industry codes:
+ 
+ The QCEW data contains five layers of aggregation
+ 
+
 
 
 
