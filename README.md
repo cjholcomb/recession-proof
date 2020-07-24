@@ -130,5 +130,5 @@ Plotting the distributions of our four main variables shows us the following:
 
 Wage growth and employment growth are roughly normal distributions (but the means of those distributions are scary. < 2% for wages and < 0 for employment.
 
-Wage recovery is a bit more odd
+Wage recovery is a bit more odder
 
