@@ -133,7 +133,7 @@ Wage growth and employment growth are roughly normal distributions (but the mean
 
 Wage recovery is a bit odd. It *wants* to be a normal distribution, and it might be if the data was smoothed over each year and extended back further in time, with a mean in 2010 or so. This speaks to a lopsidedness in the size of industries, though. Given the total economy (industry code 10) didn't recover until May 2014 . . .those industries that recovered more slowly are far larger than those that recovered quickly.
 
-The employment recovery distribution actually points to a flaw in our data. That giant spike in 2010 speaks to a mistaken assumption at the onset of this project. Two years into the decline, some industries immidiatly bounced back, and some *hadn't yet bottomed out*. Mroe on this in the "further research" section.
+The employment recovery distribution actually points to a flaw in our data. That giant spike in 2010 speaks to a mistaken assumption at the onset of this project. Two years into the decline, some industries immidiatly bounced back, but there's a possibility these could be affected by industries with extremly long lag time.
 
 # Hypotheses
 
