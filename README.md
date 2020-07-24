@@ -67,7 +67,7 @@ Next came the task of getting all these files into a format that I wanted. I wro
  
  This table provides the raw data that will generate the variables I really care about: growth over the time period in both wages and employment, when the industry "peaked" in the early years of the recession, and when the industry recovered. I transformed the data into two seperate timeline tables, tracking the employment and wage numnbers over the relevant quarters. In each table I computed the relevant derived vairables, then joined both the employee and wage timeline tables, dropping the time series and retaining only the derived variables.
  
- #   Column               Non-Null Count  Dtype    Description  
+    Column               Non-Null Count  Dtype    Description  
 ---  ------               --------------  -----    -----------
  0   industry_code        2447 non-null   int64    Numeric code for industry
  1   industry_title       2447 non-null   object   Full name of each industry
