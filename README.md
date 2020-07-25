@@ -1,4 +1,4 @@
-#Which industries can weather a recession?
+# Which industries can weather a recession?
 
 An attempt to discern what industries fared the best in retaining jobs and maintaining wages through the 2007 recession.
 
@@ -12,7 +12,7 @@ This project is an attempt to describe the employment numbers from the last rece
 
 # Assumptions
 
-* The BLS data in question is accurate (duh).
+* The BLS data in question is accurate.
 * Inflation will be ignored (for now).
 * We will concern ourselves only with job counts, not population counts or pro0portions of jobs to working-age/capable Americans.
 * Average wage in each industry (the only available data) is generalizable to the working population.
@@ -20,10 +20,7 @@ This project is an attempt to describe the employment numbers from the last rece
 # Questions
 
 * What were the most "resilient" industries? Which industries had the shortest period between job losses and recovery to their pre-recession numbers?
-  * Apply this same question to the number of establishments in each industry.
-* Were there any industries that remained constant in their job numbers throughout the recession?
-* Which industries had the most dramatic shifts in wages across the recession? Which were devalued (lower average wage) and which increased in value?
-* How did the job numbers change for each industry as a percentage of total American jobs?
+* What does the distribution of wage and employment growth look like over the recession?
 
 ## Stretch Goals
 
@@ -64,10 +61,12 @@ Next came the task of getting all these files into a format that I wanted. I wro
 | 10  |total_qtrly_wages  |149772   |non-null  |int64    |Total wages earned in that industry for the quarter (whole dollars)|
 | 11  |avg_wkly_wage      |149772   |non-null  |int64    |Average wage for employees in the industry|
 | 12  |qtrid              |149772   |non-null  |float64  |Composite of year and qtr [(year + qtr) * 4]|
- 
+
  This table provides the raw data that will generate the variables I really care about: growth over the time period in both wages and employment, when the industry "peaked" in the early years of the recession, and when the industry recovered. I transformed the data into two seperate timeline tables, tracking the employment and wage numnbers over the relevant quarters. In each table I computed the relevant derived vairables, then joined both the employee and wage timeline tables, dropping the time series and retaining only the derived variables.
- 
-     Column               Non-Null Count  Dtype    Description  
+
+
+    Column               Non-Null Count  Dtype    Description  
+>>>>>>> 2fff2a0277077f7f746266f9fb9cfdacd1d9b1f6
 ---  ------               --------------  -----    -----------
  0   industry_code        2447 non-null   int64    Numeric code for industry
  1   industry_title       2447 non-null   object   Full name of each industry
@@ -79,11 +78,11 @@ Next came the task of getting all these files into a format that I wanted. I wro
  7   peak_empl            2363 non-null   float64  Pre- recession peak employment
  8   growth_empl          2160 non-null   float64  2014q4 employment - peak_empl
  9   growth_pcg_empl      2160 non-null   float64  100* ( growth_empl / peak_empl )
- 
+
  Now that I have the data I want, it's time for some top-level exploration.
- 
+
  ## Industry codes and how to understand the dataset:
- 
+
 Each measurement (row) in the dataset is not necessarily unique- there is a good deal of aggregation going on. Understanding the aggregation levels is key to understanding how this dataset works.
 
 You can tell what "level" of data you're looking at by the industry code. For some truly bird's eye views of the data, you can look at # 10 (total of all industries). Below that are 101 and 102, Goods and Services, respectively. Beneath that you have 1011 (Natural Resources), 1012 (Construction), 1013(Manufactoring) 1021 (Trade/Transit/Utilities), 1022(Information), and 1023 (Finance). You might be seeing a pattern emrege.
@@ -98,21 +97,24 @@ For example, Forestry and Logging (113) is part of Agriculture, Forestry, Fishin
 
 Let's take a look at the employment and wage timelines for those bird's-eye aggregations.
 
-![](img/Top_empl.PNG)![](img/Top_wage.PNG)
-![](img/Top_empl_goods.PNG)![](img/Top_wage_goods.PNG)
-![](img/Top_empl_servs.PNG)![](img/Top_wage_servs.PNG)
+![](img/Top_empl.PNG)
+![](img/Top_wage.PNG)
+![](img/Top_empl_goods.PNG)
+![](img/Top_wage_goods.PNG)
+![](img/Top_empl_servs.PNG)
+![](img/Top_wage_servs.PNG)
 
 It should be obvious that most of these aggregations are severly affected by cyclical employment cycles. We can see general trends thorughout the duration of the recession, but there's too much cyclical noise to draw anything really useful.
 
 Given that some industries are cyclical (retail, farming) and some are stable (information systems, health care), lets go all the way down to generation 5, the most granular aggregation data we have (industry code > 100,000) and see the top 10 best-performing industries on both wages and employment.
 
-![](img/Top_10_empl_gen5.png)![](img/Top_10_empl_gen5.png)
+![](img/Top_10_empl_gen5.png)![](img/Top_10_wage_gen5.png)
 
 These charts reveal two things- 1- there is no obvious commonailty between the industries in question, and 2- there are some massive spikes/drops in the data.
 
 # A major caveat about the dataset:
 
-The dataset is impeccibly clean- but it does have some nasty historical artifacts. During several years in question, some routine reclassifcation work affected the data, moving firms from one industry classification to another, consolidating industry groups and depreciating others. *Unfortunately, these cahnges were not applies retrospectively.* As such, there are quite a few industries that "drop off" the data entirely and will be shown to be incredibly poor performers. 
+The dataset is impeccibly clean- but it does have some nasty historical artifacts. During several years in question, some routine reclassifcation work affected the data, moving firms from one industry classification to another, consolidating industry groups and depreciating others. *Unfortunately, these cahnges were not applies retrospectively.* As such, there are quite a few industries that "drop off" the data entirely and will be shown to be incredibly poor performers.
 
 This requires quite a few masks needed, to get rid of nans and industries that no longer exist in this classifcation scheme. This has a noticeable effect on my ability to functionize much of my work.
 
@@ -127,7 +129,7 @@ For now, I will proceed with dropping the "dead" rows from my analysis.
 # Analysis
 
 Plotting the distributions of our four main variables shows us the following:
- 
+
 ![](img/empl_growth_dist.png)![](img/wage_growth_dist.png)
 
 Wage growth and employment growth are roughly normal distributions (but the means of those distributions are scary. < 2% for wages and < 0 for employment.)
@@ -136,11 +138,11 @@ Wage growth and employment growth are roughly normal distributions (but the mean
 
 Wage recovery is a bit odd. It *wants* to be a normal distribution, and it might be if the data was smoothed over each year and extended back further in time, with a mean in 2010 or so. This speaks to a lopsidedness in the size of industries, though. Given the total economy (industry code 10) didn't recover until May 2014 . . .those industries that recovered more slowly are far larger than those that recovered quickly.
 
-The employment recovery distribution actually points to a flaw in our data. That giant spike in 2010 speaks to a mistaken assumption at the onset of this project. Two years into the decline, some industries immidiatly bounced back, and some *hadn't yet bottomed out*. Mroe on this in the "further research" section.
+The employment recovery distribution actually points to a flaw in our data. That giant spike in 2010 speaks to a mistaken assumption at the onset of this project. Two years into the decline, some industries immidiatly bounced back, but there's a possibility these could be affected by industries with extremly long lag time.
 
 # Hypotheses
 
-The employment numbers, with their issues of reclassification and the mistraken assumption at the outset, presents an issue as far as making hypotheses. We do not have any indication of how this affects the overall results. 
+The employment numbers, with their issues of reclassification and the mistraken assumption at the outset, presents an issue as far as making hypotheses. We do not have any indication of how this affects the overall results.
 
 Because of this, I will predict that *given this dataset* and classifications, relationships between employment recovery time and our other three variables will not be significant. However, that still leaves the question of how each variable will be related to one another.
 
@@ -149,40 +151,88 @@ Using a Pearson correlation, I will attempt to discern relationships between our
 ## Testing
 
 Wage Recovery : Employment Recovery
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(0)
+
 Reasoning: Employment Recovery is not reliable
+
 
 Wage Recovery : Employment Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(A)
+
 Reasoning: Growth industries quickly will see higher wages
 
+
 Wage Growth : Employment Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(A)
+
 Reasoning: Growth Industries growing quickly will see higher wages
 
+
 Wage Growth : Employment Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(0)
+
 Reasoning: Employment Recovery is not reliable
 
+
 Wage Recovery : Wage Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(A)
+
 Reasoning: Industries that have wages recover more quickly will continue to prosper and increase pay.
 
+
 Employment Recovery : Employment Growth
+
 H(0) : r ~ 0, p  <0.05
+
 H(A) : r > 0, p  <0.05
+
 prediction: H(A)
+
+Reasoning: Industries that have wages recover more quickly will continue to prosper and increase pay.
+
+
 Reasoning: This is where the issues with the EMployment Recovery and the potential for Typpe 1 errors converge. I am predicting a relationship but it might not be trustworthy.
+
+
+# Further Research/Work
+
+This data is illuminating, but incomplete. To delve more into this topic:
+
+1. Run the analysis on *county* rather than industry. This will remove the data classification issues.
+2. Get the changelog from BLS and run corrections on the industry data
+3. Repeat the analysis on different generations (levels of aggregation)
+4. Broaden the time period involved (to capture the possibility of a normal distribution in wage recovery).
+5. Adjust the metrics:
+  a. Calculate the nadir of wage/employment
+  b. Calculate the peak *before* the nadir
+  c. Calculate the recovery after the nadir
+  d. Add decline time and recovery time as dependent variables.
+6. Produce a "report card" function than can give a complete description of an industry- how it performed, what percentile it landed in.
 
 # Further Research/Work
 
