@@ -1,5 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 import math
 import scipy as scipy
 import numpy as np
@@ -18,7 +18,7 @@ def add_qtrid(df):
 
 #import one year of data to explore
 def import_one(year):
-    filepath = '../data/' + str(year) + '.csv'
+    filepath = 'data/' + str(year) + '.csv'
     df = pd.read_csv(filepath, dtype = schema_dict)
     df = df.drop(drop_list, axis = 1)
     return df
@@ -139,30 +139,33 @@ def export_info(df):
 
 ###############DATA EXPLORATION#######################
 
-def plot_industries(df, lst):
+def plot_industries(df, lst, title = 'Timeline', xlabel = 'year', ylabel = ''):
     fig, ax = plt.subplots()
-    x = df.columns.values[2:]
+    x = df.columns.values[2:34]
     for indus in lst:
         if indus in all_industries.keys():
-            y = df[df['industry_code'] == indus].values[0][2:]
+            y = df[df['industry_code'] == indus].values[0][2:34]
             label = df[df['industry_code'] == indus].values[0][1]
             ax.plot(x,y,label = label)
-    ax.legend(bbox_to_anchor = (1,1), fancybox = True)
+            ax.set_title(str(title))
+            ax.set_xlabel(str(xlabel))
+            ax.set_ylabel(str(ylabel))
+    ax.legend(bbox_to_anchor = (1,1), fancybox = True, borderaxespad=0)
     plt.show();
 
-def peaks(industry_code):
-    empl_peak = max(df_empl[df_empl['industry_code'] == industry_code].values[0][2:10])
-    firm_peak = max(df_firm[df_empl['industry_code'] == industry_code].values[0][2:10])
-    wage_peak = max(df_wage[df_empl['industry_code'] == industry_code].values[0][2:10])
-    return empl_peak, firm_peak, wage_peak
+# def peaks(industry_code):
+#     empl_peak = max(df_empl[df_empl['industry_code'] == industry_code].values[0][2:10])
+#     firm_peak = max(df_firm[df_empl['industry_code'] == industry_code].values[0][2:10])
+#     wage_peak = max(df_wage[df_empl['industry_code'] == industry_code].values[0][2:10])
+#     return empl_peak, firm_peak, wage_peak
 
-def growth(industry_code):
-    empl_peak, firm_peak, wage_peak = peaks(industry_code)
-    df_temp = df_empl[df_empl['industry_code'] == industry_code]
-    empl_growth = df_temp.iloc[0,33] - empl_peak 
-    df_temp = df_firm[df_firm['industry_code'] == industry_code]
-    firm_growth = df_temp.iloc[0,33] - firm_peak
-    df_temp = df_wage[df_wage['industry_code'] == industry_code]
-    wage_growth = df_temp.iloc[0,33] - wage_peak
-    return empl_growth, firm_growth, wage_growth
+# def growth(industry_code):
+#     empl_peak, firm_peak, wage_peak = peaks(industry_code)
+#     df_temp = df_empl[df_empl['industry_code'] == industry_code]
+#     empl_growth = df_temp.iloc[0,33] - empl_peak 
+#     df_temp = df_firm[df_firm['industry_code'] == industry_code]
+#     firm_growth = df_temp.iloc[0,33] - firm_peak
+#     df_temp = df_wage[df_wage['industry_code'] == industry_code]
+#     wage_growth = df_temp.iloc[0,33] - wage_peak
+#     return empl_growth, firm_growth, wage_growth
 
