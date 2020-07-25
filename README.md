@@ -65,19 +65,18 @@ Next came the task of getting all these files into a format that I wanted. I wro
  This table provides the raw data that will generate the variables I really care about: growth over the time period in both wages and employment, when the industry "peaked" in the early years of the recession, and when the industry recovered. I transformed the data into two seperate timeline tables, tracking the employment and wage numnbers over the relevant quarters. In each table I computed the relevant derived vairables, then joined both the employee and wage timeline tables, dropping the time series and retaining only the derived variables.
 
 
-    Column               Non-Null Count  Dtype    Description  
-
----  ------               --------------  -----    -----------
- 0   industry_code        2447 non-null   int64    Numeric code for industry
- 1   industry_title       2447 non-null   object   Full name of each industry
- 2   recovery_wage        2447 non-null   float64  Quarter in which wages surpassed pre-recession peak
- 3   peak_wage            2363 non-null   float64  Pre-recession peak wages
- 4   growth_wage          2160 non-null   float64  2014q4 wages - peak_wage
- 5   growth_pcg_wage      2160 non-null   float64  100 * ( growth_wage / peak_wage )
- 6   recovery_empl        2447 non-null   float64  Quarter in which employment surpassed
- 7   peak_empl            2363 non-null   float64  Pre- recession peak employment
- 8   growth_empl          2160 non-null   float64  2014q4 employment - peak_empl
- 9   growth_pcg_empl      2160 non-null   float64  100* ( growth_empl / peak_empl )
+||Variable|Count|Type|Description|  
+|---|---|---|---|---|
+|0|industry_code|2447|int64|Numeric code for industry|
+|1|industry_title|2447|object|Full name of each industry|
+|2|recovery_wage|2447|float64|Quarter in which wages surpassed pre-recession peak|
+|3|peak_wage|2363|float64|Pre-recession peak wages|
+|4|growth_wage|2160|float64|2014q4 wages - peak_wage|
+|5|growth_pcg_wage2160|float64|100 * ( growth_wage / peak_wage )|
+|6|recovery_empl|2447|float64|Quarter in which employment surpassed|
+|7|peak_empl|2363|float64|Pre- recession peak employment|
+|8|growth_empl|2160|float64|2014 q4 employment - peak_empl|
+|9|growth_pcg_empl|2160|float64|100* ( growth_empl / peak_empl )|
 
  Now that I have the data I want, it's time for some top-level exploration.
 
