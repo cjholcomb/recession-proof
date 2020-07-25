@@ -72,7 +72,7 @@ Next came the task of getting all these files into a format that I wanted. I wro
 |2|recovery_wage|2447|float64|Quarter in which wages surpassed pre-recession peak|
 |3|peak_wage|2363|float64|Pre-recession peak wages|
 |4|growth_wage|2160|float64|2014q4 wages - peak_wage|
-|5|growth_pcg_wage2160|float64|100 * ( growth_wage / peak_wage )|
+|5|growth_pcg_wage|2160|float64|100 * ( growth_wage / peak_wage )|
 |6|recovery_empl|2447|float64|Quarter in which employment surpassed|
 |7|peak_empl|2363|float64|Pre- recession peak employment|
 |8|growth_empl|2160|float64|2014 q4 employment - peak_empl|
