@@ -48,10 +48,10 @@ Next came the task of getting all these files into a format that I wanted. I wro
 
 ||Variable|Count|Type|Description|
 |---|---|---|---|---|
-|0|industry_code149772|int32|Numeric code for industry|
+|0|industry_code|149772|int32|Numeric code for industry|
 |1|agglvl_code|149772|object|Aggregation Level of Industry|
 |2|year|149772|int6|44 digit Year|
-|3|qtr149772|int64|1 digit quarter|
+|3|qtr|149772|int64|1 digit quarter|
 |4|industry_title|149772|object|Full name of each industry|
 |5|agglvl_title|149772|object|Full description of aggregation level|
 |6|qtrly_estabs_count|149772|int64|Full count of firms in each industry operation for that quarter|
@@ -96,12 +96,12 @@ For example, Forestry and Logging (113) is part of Agriculture, Forestry, Fishin
 
 Let's take a look at the employment and wage timelines for those bird's-eye aggregations.
 
-![](img/Top_empl.PNG)
-![](img/Top_wage.PNG)
-![](img/Top_empl_goods.PNG)
-![](img/Top_wage_goods.PNG)
-![](img/Top_empl_servs.PNG)
-![](img/Top_wage_servs.PNG)
+![](img/Top_empl.png)
+![](img/Top_wage.png)
+![](img/Top_empl_goods.png)
+![](img/Top_wage_goods.png)
+![](img/Top_empl_servs.png)
+![](img/Top_wage_servs.png)
 
 It should be obvious that most of these aggregations are severly affected by cyclical employment cycles. We can see general trends thorughout the duration of the recession, but there's too much cyclical noise to draw anything really useful.
 
