@@ -49,24 +49,24 @@ Next came the task of getting all these files into a format that I wanted. I wro
 ||Variable|Count|Type|Description|
 |---|---|---|---|---|
 |0|industry_code149772|int32|Numeric code for industry|
-|1|agglvl_code149772|object|Aggregation Level of Industry|
-|2|year|149772|int644 digit Year|
-|3|qtr149772|int641 digit quarter|
+|1|agglvl_code|149772|object|Aggregation Level of Industry|
+|2|year|149772|int6|44 digit Year|
+|3|qtr149772|int64|1 digit quarter|
 |4|industry_title|149772|object|Full name of each industry|
 |5|agglvl_title|149772|object|Full description of aggregation level|
 |6|qtrly_estabs_count|149772|int64|Full count of firms in each industry operation for that quarter|
-|7|month1_emplvl149772|int64|Count of total employees in industry for month 1 of the qtr|
-|8|month2_emplvl149772|int64|Count of total employees in industry for month 2 of the qtr|
-|9|month3_emplvl149772|int64|Count of total employees in industry for month 1 of the qtr|
-|10|total_qtrly_wages149772|int64|Total wages earned in that industry for the quarter (whole dollars)|
-|11|avg_wkly_wage149772|int64|Average wage for employees in the industry|
-|12|qtrid149772|float64|Composite of year and qtr [(year + qtr) * 4]|
+|7|month1_emplvl1|49772|int64|Count of total employees in industry for month 1 of the qtr|
+|8|month2_emplvl1|49772|int64|Count of total employees in industry for month 2 of the qtr|
+|9|month3_emplvl1|49772|int64|Count of total employees in industry for month 1 of the qtr|
+|10|total_qtrly_wages|149772|int64|Total wages earned in that industry for the quarter (whole dollars)|
+|11|avg_wkly_wage|149772|int64|Average wage for employees in the industry|
+|12|qtrid|149772|float64|Composite of year and qtr [(year + qtr) * 4]|
 
  This table provides the raw data that will generate the variables I really care about: growth over the time period in both wages and employment, when the industry "peaked" in the early years of the recession, and when the industry recovered. I transformed the data into two seperate timeline tables, tracking the employment and wage numnbers over the relevant quarters. In each table I computed the relevant derived vairables, then joined both the employee and wage timeline tables, dropping the time series and retaining only the derived variables.
 
 
     Column               Non-Null Count  Dtype    Description  
->>>>>>> 2fff2a0277077f7f746266f9fb9cfdacd1d9b1f6
+
 ---  ------               --------------  -----    -----------
  0   industry_code        2447 non-null   int64    Numeric code for industry
  1   industry_title       2447 non-null   object   Full name of each industry
