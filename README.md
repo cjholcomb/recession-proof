@@ -232,18 +232,3 @@ This data is illuminating, but incomplete. To delve more into this topic:
   c. Calculate the recovery after the nadir
   d. Add decline time and recovery time as dependent variables.
 6. Produce a "report card" function than can give a complete description of an industry- how it performed, what percentile it landed in.
-
-# Further Research/Work
-
-This data is illuminating, but incomplete. To delve more into this topic:
-
-1. Run the analysis on *county* rather than industry. This will remove the data classification issues.
-2. Get the changelog from BLS and run corrections on the industry data
-3. Repeat the analysis on different generations (levels of aggregation)
-4. Broaden the time period involved (to capture the possibility of a normal distribution in wage recovery).
-5. Adjust the metrics:
-  a. Calculate the nadir of wage/employment
-  b. Calculate the peak *before* the nadir
-  c. Calculate the recovery after the nadir
-  d. Add decline time and recovery time as dependent variables.
-6. Produce a "report card" function than can give a complete description of an industry- how it performed, what percentile it landed in.
